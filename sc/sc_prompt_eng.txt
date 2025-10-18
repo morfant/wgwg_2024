@@ -1,0 +1,52 @@
+**Prompt:**
+
+Create SuperCollider code that defines a SynthDef and a Pdef based on the following parameters:
+
+### Input
+
+**Common**  
+- Theme: cat's the way of love climate change 
+
+**For SynthDef**  
+- Final amplitude: around -6dB  
+- Panning: stable  
+- Main synthesis method: choose between [Rich Additive, Waveshaping, Sampling]  
+- Reverberation: 20 out of 100  
+- Highlight band: mid-high  
+- Output bus number: 100
+
+**For Pdef**  
+- Pattern complexity: low  
+- Repeat of each pattern class: less than 20 (never use `inf`!)  
+- Number of parallel melody lines: 3  
+- Number of notes per melody line: about 20  
+- Melody sequence speed: mid tempo
+- Scale concept: serialism
+
+### Task
+
+Using the above input, generate SuperCollider code that:
+1. Use .add method to registers a SynthDef on the server.
+2. Registers a Pdef pattern using that SynthDef as its instrument.
+
+Wrap both the SynthDef and Pdef within a single parentheses block so they can be executed together. The Pdef should use the `.play` method at the end.
+
+**Specific Requirements:**
+- Name the SynthDef and Pdef the same (use English with proper capitalization).
+- Ensure the repeat argument for pattern classes like `Pseq` in the `Pbind` is not `inf` and at least one pattern class has a repeat argument of less than 50.
+- Avoid using `.add` at the end of the Pdef.
+- `PmidiCps` class should not be used, and `Pseq` must include a non-empty collection.
+- Ensure that any pattern classes like `Pseq` can not understand '.scramble' method.
+- Don't use '.serial' method with Scale class.
+
+- If you use `Demand`, avoid `inf` as the repeat count and ensure the `trig` argument is an audio-rate UGen.
+- Define local variables with `var` at the beginning of the function.
+- If a sample is needed, use `/Users/giy/WGWG/server/backend/static/sample.wav` as the file path.
+
+### Output Format
+
+- The entire output should be formatted as SuperCollider code inside a Markdown code block.
+- On the first line, include the comment `// SynthDef` followed by the SynthDef's name on the next line as a comment.
+- Ensure no `.add` method is used after Pdef, and avoid `PmidiCps`.
+- Keep the complexity simple, with a stable but warm and loving theme throughout the sound.
+

@@ -1,0 +1,42 @@
+#입력
+[주제] = 이상한 사람
+[amplitude] = 약 -6dB 
+[Number of melody line] = 2
+[Number of notes on each melody line] = about 50
+[Complexity of melody sequence] = high 
+[Dur of each note] = 0.2 ~ 0.5 seconds
+[Length of entire sound] = about 20.0 seconds
+[Panning] = 안정적으로
+[Synthesis tendency] = Rich Additive
+[Scale concept] = minor
+
+#처리
+상단의 입력을 참고해 소리를 만들어 줘.
+
+#출력
+Supercollider 코드를 Synthdef 형식으로, 서버에 등록할 수 있게 만들어줘.
+결과에는 Supercollider 코드 외에는 아무것도 포함시키지 말아줘록
+Demand UGen을 사용하는 경우 반복횟수에는 inf를 사용하지 말아줘.
+코드의 맨 첫 줄 에는 '// Synthdef'라고 적어줘.
+코드의 두 번째 줄 에는 '// '에 이어서 SynthDef의 이름으로 사용할 문자열을 대소문자까지 동일하게 영어로 넣어줘.
+
+#주의사항
+Demand를 반드시 사용할 필요는 없어.
+만약 Demand 를 사용할 때는 아래 내용을 확인해줘.
+
+Demand.ar(trig, reset, demandUGens)
+
+'trig' argument of Demand Class has to be audio rate UGen.
+
+Argument:
+    trig	
+        It has to be Audio rate UGen. Trigger. Can be any signal. A trigger happens when the signal changes from non-positive to positive.
+    reset	
+        Trigger. Resets the list of UGens when triggered.
+    demandUGens	
+        List of demand-rate UGens to get values from. When the shortest stream ends, this ugen will set the 'done' flag.
+        'repeat' of any demandUGens shoud not be 'inf'. 
+
+
+var 를 이용해 지역변수를 정의 할 때는 반드시 함수가 시작되자마자 진행해줘.
+Buffer로 불러올 오디오 샘플이 필요할 때는 /Users/giy/WGWG/server/backend/static/sample.wav 를 사용해줘.
